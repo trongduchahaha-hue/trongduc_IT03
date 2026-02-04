@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let booksId = [];
+        let booksName = [];
+        let inventoryQuantity = [];
+        let n = parseInt(prompt("Có bao nhiêu loại sách cần kiểm tra bổ sung hôm nay?"));
+
+        if (n > 0) {
+            for (let i = 0; i < n; i++) {
+                let id = prompt("Nhập mã sách thứ " + (i + 1) + " (không được để trống):");
+                let name = prompt("Nhập tên sách thứ " + (i + 1) + " (không được để trống):");
+                let qty = parseInt(prompt("Nhập số lượng tồn kho cho " + name + ":"));
+                booksId.push(id);
+                booksName.push(name);
+                inventoryQuantity.push(qty);
+            }
+
+            console.log("--- BÁO CÁO TỒN KHO ---");
+            console.log("Tổng số loại sách đang kiểm tra: " + booksId.length);
+
+            let uuTienBoSung = 0;
+            let danhSachHetHang = [];
+
+            for (let i = 0; i < n; i++) {
+                if (inventoryQuantity[i] <= 5) {
+                    uuTienBoSung++;
+                }
+                if (inventoryQuantity[i] === 0) {
+                    danhSachHetHang.push(booksId[i]);
+                }
+            }
+
+            console.log("Số lượng sách cần ưu tiên bổ sung (<= 5 bản): " + uuTienBoSung);
+            console.log("Các mã sách đã hết hàng: " + (danhSachHetHang.length > 0 ? danhSachHetHang.join(", ") : "Không có"));
+
+            console.log(`Danh sách sách cần xem xét bổ sung (${n} loại):`);
+            for (let i = 0; i < n; i++) {
+                console.log(`${i + 1}. Mã: ${booksId[i]} - Tên: ${booksName[i]} - Còn: ${inventoryQuantity[i]} bản`);
+            }
+        }
+    </script>
+</body>
+
+</html>

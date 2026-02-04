@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = [];
+        let book = parseInt(prompt("Hôm nay có bao nhiêu cuốn sách bị trả muộn?"));
+        if (isNaN(book) || book < 0) {
+            console.log(" Không hợp lệ vui lòng nhập số nguyên dương!");
+        } else {
+            for (let i = 1; i <= book; i++) {
+                let bookName = prompt(`Nhập tên cuốn sách bị trả muộn thứ ${i}`);
+                arr.push(bookName);
+            }
+        }
+        let totalBook = 0;
+        for (let i = 0; i < arr.length; i++) {
+            totalBook++;
+        }
+        console.log("Tổng số sách đã được trả: " + totalBook);
+
+        console.log("Danh sách các tên sách:");
+        for (let i = 0; i < arr.length; i++) {
+            console.log((i + 1) + " - " + arr[i]);
+        }
+        let lengthBook = 0;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i].length > 20) {
+                lengthBook++;
+            }
+        }
+        console.log("Số lượng sách có tên dài hơn 20 ký tự: " + lengthBook);
+    </script>
+</body>
+
+</html>
